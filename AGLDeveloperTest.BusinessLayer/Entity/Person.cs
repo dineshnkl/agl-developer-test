@@ -1,10 +1,10 @@
-﻿namespace AGLDeveloperTest.BusinessLayer.Dto
+﻿namespace AGLDeveloperTest.BusinessLayer.Entity
 {
-    public class PersonJsonDto
+    public class Person
     {
         public string name { get; set; }
         public string gender { get; set; }
         public string age { get; set; }
-        public PetJsonDto[] pets { get; set; }
+        public Pet[] pets { get; set; }
     }
 }

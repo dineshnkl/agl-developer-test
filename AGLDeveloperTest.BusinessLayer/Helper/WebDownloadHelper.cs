@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -7,13 +8,13 @@ namespace AGLDeveloperTest.BusinessLayer.Helper
 {
     public static class WebDownloadHelper
     {
-        public static async Task<HttpResponseMessage> Get(string url)
+        public static HttpResponseMessage Get(string url)
         {
             try
             {
                 using (var httpClient = new HttpClient())
                 {
-                    var responseMessage = await httpClient.GetAsync(url);
+                    var responseMessage = httpClient.GetAsync(url).Result;
                     return responseMessage;
                 }
             }
@@ -23,6 +24,18 @@ namespace AGLDeveloperTest.BusinessLayer.Helper
                 responseMessage.RequestMessage = new HttpRequestMessage(HttpMethod.Get, url);
                 responseMessage.Content = new StringContent(ivEx.Message);
                 responseMessage.RequestMessage.Content = responseMessage.Content;
+                return responseMessage;
+            }
+            //No internet connection
+            catch (AggregateException aggEx)
+            {
+                var responseMessage = new HttpResponseMessage(HttpStatusCode.NotFound);
+                var message = string.Join(Environment.NewLine, aggEx.InnerExceptions.Select(ex =>
+                                           string.Concat(ex.Message, Environment.NewLine,
+                                           ex.InnerException == null ? string.Empty : ex.InnerException.Message)));
+                message = string.Concat(aggEx.Message, Environment.NewLine, message);
+                responseMessage.RequestMessage = new HttpRequestMessage(HttpMethod.Get, url);
+                responseMessage.Content = new StringContent(message);
                 return responseMessage;
             }
         }

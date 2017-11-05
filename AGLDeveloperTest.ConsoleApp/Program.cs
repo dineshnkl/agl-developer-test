@@ -9,17 +9,16 @@ namespace AGLDeveloperTest.ConsoleApp
         static void Main(string[] args)
         {
             var petsDomain = new Pets();
-            var peopleDataUrl = "http://agl-developer-test.azurewebsites.net/people.json";
-            var groupedCatsResponseDto = petsDomain.GetCatsGroupedByOwnerGender(peopleDataUrl, OrderBy.Ascending);
+            var groupedCatsResponseDto = petsDomain.GetCatsGroupedByOwnerGender(OrderBy.Ascending);
             if (groupedCatsResponseDto.Success)
             {
-                foreach (var group in groupedCatsResponseDto.GroupedPets)
+                foreach (var group in groupedCatsResponseDto.GroupedByOwner)
                 {
-                    Console.WriteLine(group.Gender);
-                    Console.WriteLine(new string('-', group.Gender.Length));
-                    foreach (var cat in group.Pets)
+                    Console.WriteLine(group.Key);
+                    Console.WriteLine(new string('-', group.Key.Length));
+                    foreach (var map in group)
                     {
-                        Console.WriteLine("{0}", cat.name);
+                        Console.WriteLine("{0}", map.Pet.name);
                     }
                     Console.WriteLine();
                 }

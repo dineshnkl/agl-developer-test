@@ -40,20 +40,20 @@
     <Compile Include="Domain\IPets.cs" />
     <Compile Include="Domain\Pets.cs" />
     <Compile Include="Dto\ReadStringResposeDto.cs" />
-    <Compile Include="Dto\GenderPetsDto.cs" />
-    <Compile Include="Dto\PersonJsonDto.cs" />
-    <Compile Include="Dto\PetJsonDto.cs" />
     <Compile Include="Dto\PetsGroupedByOwnerGenderResponseDto.cs" />
     <Compile Include="Dto\ResponseDto.cs" />
+    <Compile Include="Entity\Person.cs" />
+    <Compile Include="Entity\PersonPetMap.cs" />
+    <Compile Include="Entity\Pet.cs" />
     <Compile Include="Enums\OrderBy.cs" />
     <Compile Include="Enums\PetType.cs" />
     <Compile Include="Helper\JsonHelper.cs" />
     <Compile Include="Helper\WebDownloadHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\DownloadService.cs" />
-    <Compile Include="Service\HttpService.cs" />
-    <Compile Include="Service\IDownloadService.cs" />
-    <Compile Include="Service\IHttpService.cs" />
+    <Compile Include="Repository\IPeopleRepository.cs" />
+    <Compile Include="Repository\PeopleRepository.cs" />
+    <Compile Include="Service\IPeopleService.cs" />
+    <Compile Include="Service\PeopleService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

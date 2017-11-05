@@ -5,6 +5,6 @@ namespace AGLDeveloperTest.BusinessLayer.Domain
 {
     public interface IPets
     {
-        PetsGroupedByOwnerGenderResponseDto GetCatsGroupedByOwnerGender(string url, OrderBy orderBy);
+        PetsGroupedByOwnerGenderResponseDto GetCatsGroupedByOwnerGender(OrderBy orderBy);
     }
 }
