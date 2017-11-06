@@ -9,5 +9,6 @@ namespace AGLDeveloperTest.BusinessLayer.Repository
         IEnumerable<Person> People { get; }
         HttpStatusCode HttpStatusCode { get; }
         bool IsInitialized { get; }
+        string DataSourceUrl { get; }
     }
 }

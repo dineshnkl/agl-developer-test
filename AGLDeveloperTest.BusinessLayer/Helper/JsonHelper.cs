@@ -4,15 +4,6 @@ namespace AGLDeveloperTest.BusinessLayer.Helper
 {
     public static class JsonHelper
     {
-        public static string Serialize(object data)
-        {
-            var javaScriptSerializer = new JavaScriptSerializer();
-            string serializedString = null;
-            if (data != null)
-                serializedString = javaScriptSerializer.Serialize(data);
-            return serializedString;
-        }
-
         public static T Deserialize<T>(string data)
         {
             var javaScriptSerializer = new JavaScriptSerializer();
